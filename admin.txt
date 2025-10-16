@@ -1,0 +1,4 @@
+{
+    "username": "admin",
+    "passwordHash": "$2y$10$Dae.4wRl25g5a5aLd2mCFei5h2fEMJvYjA3y1WnTTaxO/VfHqgC2m"
+}

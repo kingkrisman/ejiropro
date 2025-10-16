@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - LASU FOC</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-input-container {
+            position: relative;
+        }
+        .form-input-container .fa-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af; /* gray-400 */
+        }
+        .form-input-container input {
+            padding-left: 3rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 flex items-center justify-center min-h-screen">
+    <div class="w-full max-w-md p-8 space-y-8 bg-white rounded-2xl shadow-2xl">
+        <!-- Header Section -->
+        <div class="text-center">
+            <div class="inline-block p-3 bg-red-100 rounded-full">
+                <i class="fas fa-user-shield fa-2x text-red-700"></i>
+            </div>
+            <h1 class="mt-4 text-3xl font-bold text-gray-900">
+                Administrator Access
+            </h1>
+            <p class="mt-2 text-sm text-gray-600">LASU Faculty of Computing Portal</p>
+        </div>
+
+        <!-- Admin Login Form -->
+        <form id="adminLoginForm" class="mt-8 space-y-6">
+            <!-- Username Field -->
+            <div class="form-input-container">
+                <i class="fas fa-user-cog fa-icon"></i>
+                <input id="username" name="username" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Admin Username">
+            </div>
+            <!-- Password Field -->
+            <div class="form-input-container">
+                <i class="fas fa-key fa-icon"></i>
+                <input id="password" name="password" type="password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-500" placeholder="Password">
+            </div>
+
+            <!-- Submission Button -->
+            <div>
+                <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent font-semibold rounded-lg text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition-colors duration-300">
+                    <i class="fas fa-sign-in-alt mr-2"></i>
+                    Log In Securely
+                </button>
+            </div>
+        </form>
+
+        <!-- Message Display Area -->
+        <div id="message" class="text-center text-sm mt-4"></div>
+        
+        <!-- Back to main site link -->
+        <div class="text-sm text-center mt-6">
+             <a href="login.html" class="font-medium text-blue-600 hover:underline">
+                &larr; Return to main login
+            </a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#adminLoginForm').submit(function(e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                var messageDiv = $('#message');
+
+                messageDiv.html(''); // Clear previous messages
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'admin_login.php', // This will be our next file
+                    data: formData,
+                    dataType: 'json',
+                    beforeSend: function() {
+                        messageDiv.html('<p class="text-blue-500">Authenticating...</p>');
+                    },
+                    success: function(response) {
+                        if(response.status === 'success'){
+                             messageDiv.html('<p class="text-green-500 font-medium">' + response.message + '</p>');
+                             // Redirect to the admin dashboard
+                             window.location.href = 'admin_dashboard.php';
+                        } else {
+                             messageDiv.html('<p class="text-red-500 font-medium">' + response.message + '</p>');
+                        }
+                    },
+                    error: function() {
+                        messageDiv.html('<p class="text-red-500 font-medium">An error occurred while processing your request.</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

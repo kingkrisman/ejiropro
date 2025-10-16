@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - LASU Faculty of Computing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .form-input-container {
+            position: relative;
+        }
+        .form-input-container .fa-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9ca3af; /* gray-400 */
+        }
+        .form-input-container input {
+            padding-left: 3rem;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="flex items-center justify-center min-h-screen">
+        <div class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0">
+            <!-- Left Side -->
+            <div class="relative flex flex-col justify-between p-8 md:p-12 lg:p-16 md:w-1/2 bg-blue-900 text-white rounded-2xl md:rounded-r-none">
+                 <div class="absolute top-0 left-0 w-full h-full bg-blue-900/80 backdrop-blur-sm rounded-2xl md:rounded-r-none"></div>
+                 <div class="relative z-10">
+                    <div class="flex items-center space-x-3">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v11.494m-9-5.747h18" />
+                        </svg>
+                        <span class="text-2xl font-bold">LASU FOC</span>
+                    </div>
+                    <h1 class="mt-8 text-4xl font-bold leading-tight">
+                        Empowering Minds, <br>Shaping Futures.
+                    </h1>
+                    <p class="mt-4 text-blue-200">
+                        Access all your academic resources in one place. Join our community of learners and educators.
+                    </p>
+                </div>
+                 <div class="relative z-10 mt-8 text-sm">
+                    &copy; 2024 Lagos State University, Faculty of Computing.
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="flex flex-col justify-center p-8 md:p-12 lg:p-16 md:w-1/2">
+                <div class="text-left">
+                    <h2 class="text-3xl font-bold text-gray-800">Create Account</h2>
+                    <p class="mt-2 text-gray-500">Let's get you started!</p>
+                </div>
+
+                <!-- Registration Form -->
+                <form id="registrationForm" class="mt-8 space-y-5" action="register.php" method="POST">
+                    <!-- Full Name Field -->
+                    <div class="form-input-container">
+                        <i class="fas fa-user fa-icon"></i>
+                        <input id="fullname" name="fullname" type="text" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Full Name">
+                    </div>
+                    <!-- Email Address Field -->
+                    <div class="form-input-container">
+                        <i class="fas fa-envelope fa-icon"></i>
+                        <input id="email-address" name="email" type="email" autocomplete="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Email address">
+                    </div>
+                    <!-- Password Field -->
+                    <div class="form-input-container">
+                        <i class="fas fa-lock fa-icon"></i>
+                        <input id="password" name="password" type="password" autocomplete="new-password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Password">
+                    </div>
+                    <!-- Confirm Password Field -->
+                    <div class="form-input-container">
+                         <i class="fas fa-lock fa-icon"></i>
+                        <input id="confirm-password" name="confirm_password" type="password" autocomplete="new-password" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Confirm Password">
+                    </div>
+
+                    <!-- User Type Selection -->
+                    <div class="flex items-center justify-start space-x-6 pt-2">
+                        <p class="text-sm font-medium text-gray-700">I am a:</p>
+                        <div class="flex items-center">
+                            <input id="role-student" name="role" type="radio" value="student" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                            <label for="role-student" class="ml-2 block text-sm text-gray-900">Student</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input id="role-lecturer" name="role" type="radio" value="lecturer" required class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300">
+                            <label for="role-lecturer" class="ml-2 block text-sm text-gray-900">Lecturer</label>
+                        </div>
+                    </div>
+
+                    <!-- Submission Button -->
+                    <div>
+                        <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent font-semibold rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-colors duration-300">
+                            Register
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Login Link -->
+                <div class="mt-6 text-sm text-center">
+                    <p class="text-gray-600">
+                        Already have an account?
+                        <a href="login.html" class="font-medium text-blue-600 hover:underline">
+                            Sign in
+                        </a>
+                    </p>
+                </div>
+                 <!-- Message Display Area -->
+                <div id="message" class="text-center text-sm mt-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#registrationForm').submit(function(e) {
+                e.preventDefault();
+                var formData = $(this).serialize();
+                var password = $('#password').val();
+                var confirmPassword = $('#confirm-password').val();
+                var messageDiv = $('#message');
+
+                messageDiv.html(''); // Clear previous messages
+
+                if (password.length < 6) {
+                    messageDiv.html('<p class="text-red-500 font-medium">Password must be at least 6 characters long.</p>');
+                    return;
+                }
+
+                if (password !== confirmPassword) {
+                    messageDiv.html('<p class="text-red-500 font-medium">Passwords do not match.</p>');
+                    return;
+                }
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'register.php', // This file needs to be created on your server
+                    data: formData,
+                    dataType: 'json', // Expect a JSON response from the server
+                    beforeSend: function() {
+                        messageDiv.html('<p class="text-blue-500">Processing...</p>');
+                    },
+                    success: function(response) {
+                        if(response.status === 'success'){
+                             messageDiv.html('<p class="text-green-500 font-medium">' + response.message + '</p>');
+                             setTimeout(function(){
+                                window.location.href = 'login.html';
+                             }, 2000);
+                        } else {
+                             messageDiv.html('<p class="text-red-500 font-medium">' + response.message + '</p>');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error("AJAX Error:", status, error);
+                        console.error("Response Text:", xhr.responseText);
+                        messageDiv.html('<p class="text-red-500 font-medium">An error occurred. Please check the console and try again.</p>');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
